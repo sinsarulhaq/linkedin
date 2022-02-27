@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 import { SignInAPI } from "../actions";
 import { useNavigate } from "react-router-dom";
 
 function Login(props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Container>
-      {props.user && navigate('/home')}
+      {props.user && navigate("/home")}
       <Nav>
         <a href="/">
           <img src="/images/login-logo.svg" alt="" />
@@ -33,8 +33,6 @@ function Login(props) {
     </Container>
   );
 }
-
-
 
 const Container = styled.div`
   padding: 0px;
@@ -154,25 +152,25 @@ const Google = styled.button`
   box-shadow: inset 0 0 0 1px rgb(0 0 0 / 60%),
     inset 0 0 0 2px rgb(0 0 0 / 0%) inset 0 0 0 1px rgb(0 0 0 / 0);
 
-    vertical-align: middle;
-    z-index: 0;
-    transition-duration: 167ms;
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.6);
-    &:hover{
-        background-color: rgba(207, 207, 207, 0.25);
-        color: rgba(0, 0, 0, 0.75);
-    }
-`;
-
-const mapStateToProps = (state) => {
-  return{
-    user: state.userState.user
+  vertical-align: middle;
+  z-index: 0;
+  transition-duration: 167ms;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+  &:hover {
+    background-color: rgba(207, 207, 207, 0.25);
+    color: rgba(0, 0, 0, 0.75);
   }
-}
-
+`;
+//state to props
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+//action to props
 const mapDispatchToProps = (dispatch) => ({
-  SignIn: () => dispatch(SignInAPI())
-})
+  SignIn: () => dispatch(SignInAPI()),
+});
 
-export default connect(mapStateToProps,mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
