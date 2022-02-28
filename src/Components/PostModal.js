@@ -296,6 +296,7 @@ const mapStateToProps = (state) => {
     user: state.userState.user,
   }
 }
+
 const mapDispatchToProps = (dispatch) => ({
   postArticle: (payloa) => dispatch(postArticleAPI(payloa))
 })
