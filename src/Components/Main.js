@@ -29,10 +29,17 @@ function Main(props) {
         setShowModal("close");
     }
   };
+  const myStyle = {
+    width: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
   return (
-    <>
-      {props.articles.length === 0 ? (
-        <p>There are no Articles</p>
+    <MainCom>
+      {
+      props.articles.length === 0 ? (
+        <img src={"./images/spin.svg"} className='spin' style={myStyle} />
       ) : (
         <Container>
           <ShareBox>
@@ -132,14 +139,18 @@ function Main(props) {
           <PostModal showModal={showModal} handleClick={handleClick} />
         </Container>
       )}
-    </>
+    </MainCom>
   );
 }
 
 const Container = styled.div`
   grid-area: main;
 `;
-
+const MainCom = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
 const CommonCard = styled.div`
   text-align: center;
   overflow: hidden;
@@ -329,6 +340,14 @@ const Content = styled.div`
   text-align: center;
   & > img {
     width: 30px;
+  }
+  & > .spin{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
   }
 `;
 const mapStateToProps = (state) => {

@@ -10,7 +10,7 @@ const articleReducer = (state = initState, action) => {
     case GET_ARTICLES:
       return {
         ...state,
-        articles: action.payload,
+        articles: action.article,
       };
     case SET_LOADING_STATUS:
       return {

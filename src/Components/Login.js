@@ -10,7 +10,7 @@ function Login(props) {
     <Container>
       {props.user && navigate("/home")}
       <Nav>
-        <a href="/">
+        <a>
           <img src="/images/login-logo.svg" alt="" />
         </a>
         <div>

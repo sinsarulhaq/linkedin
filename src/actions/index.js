@@ -1,6 +1,5 @@
 import db, { auth, provider, storage } from "../firebase";
 import { SET_USER, SET_LOADING_STATUS, GET_ARTICLES } from "../actions/actionType";
-import { type } from "@testing-library/user-event/dist/type";
 
 export const setUser = (payload) => ({
   type: SET_USER,
@@ -12,9 +11,9 @@ export const setLoading = (status) => ({
   status: status,
 })
 
-export const getArticles = (payload) => ({
+export const getArticles = (payloade) => ({
   type : GET_ARTICLES,
-  payload: payload
+  article: payloade
 })
 
 export function SignInAPI() {
@@ -102,10 +101,12 @@ export function postArticleAPI(payload) {
 
 export function getArticleAPI() {
 return (dispatch) => {
+  dispatch(setLoading(true))
   db.collection('articles').orderBy('actor.date', 'desc').onSnapshot((snapshot) => {
    const payload = snapshot.docs.map((doc) => doc.data())
    console.log(payload)
    dispatch(getArticles(payload))
   })
+  dispatch(setLoading(false))
 }
 }

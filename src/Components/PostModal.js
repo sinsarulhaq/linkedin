@@ -27,18 +27,20 @@ function PostModal(props) {
     setAssetArea(area);
   };
 
+  
+  const payload = {
+    image: shareImage,
+    video: videoLink,
+    user: props.user,
+    description: editorText,
+    timestamp: firebase.firestore.Timestamp.now()
+  }
   const postArticle = (e) => {
     e.preventDefault()
-    if(e.target !== e.currentTarget){
-      return;
-    }
-    const payload = {
-      image: shareImage,
-      video: videoLink,
-      user: props.user,
-      description: editorText,
-      timestamp: firebase.firestore.Timestamp.now()
-    }
+    // if(e.target !== e.currentTarget){
+    //   return;
+    // }
+ 
     props.postArticle(payload)
     reset(e)
   }
@@ -298,7 +300,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  postArticle: (payloa) => dispatch(postArticleAPI(payloa))
+  postArticle: (payload) => dispatch(postArticleAPI(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostModal);
